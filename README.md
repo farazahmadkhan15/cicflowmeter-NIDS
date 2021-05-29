@@ -11,8 +11,8 @@ Please refer https://gitlab.com/hieulw/cicflowmeter.git  for seperate use
 
 ```sh
 git clone https://github.com/farazahmadkhan15/cicflowmeter-NIDS.git
-cd cicflowmeter
-python setup.py install
+cd cicflowmeter-NIDS
+sudo python setup.py install
 ```
 
 
