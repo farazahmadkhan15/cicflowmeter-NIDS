@@ -138,6 +138,9 @@ class FlowSession(DefaultSession):
                             "Content-Type": "application/json; format=pandas-split"
                         },
                     )
+                    
+                    resp = post.json()
+                    data["label"] = resp["label"]
 
                 if self.csv_line == 0:
                     self.csv_writer.writerow(data.keys())
