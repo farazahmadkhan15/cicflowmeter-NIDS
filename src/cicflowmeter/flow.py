@@ -94,50 +94,50 @@ class Flow:
             "src_ip": self.src_ip,
             "dst_ip": self.dest_ip,
             "src_port": self.src_port,
-            "dst_port": self.dest_port,
+            " Destination Port": self.dest_port,
             "protocol": self.protocol,
             # Basic information from packet times
             "timestamp": packet_time.get_time_stamp(),
-            "flow_duration": 1e6 * packet_time.get_duration(),
+            " Flow Duration": 1e6 * packet_time.get_duration(),
             "flow_byts_s": flow_bytes.get_rate(),
             "flow_pkts_s": packet_count.get_rate(),
             "fwd_pkts_s": packet_count.get_rate(PacketDirection.FORWARD),
-            "bwd_pkts_s": packet_count.get_rate(PacketDirection.REVERSE),
+            " Bwd Packets/s": packet_count.get_rate(PacketDirection.REVERSE),
             # Count total packets by direction
-            "tot_fwd_pkts": packet_count.get_total(PacketDirection.FORWARD),
+            "Total Length of Fwd Packets": packet_count.get_total(PacketDirection.FORWARD),
             "tot_bwd_pkts": packet_count.get_total(PacketDirection.REVERSE),
             # Statistical info obtained from Packet lengths
             "totlen_fwd_pkts": packet_length.get_total(PacketDirection.FORWARD),
             "totlen_bwd_pkts": packet_length.get_total(PacketDirection.REVERSE),
             "fwd_pkt_len_max": float(packet_length.get_max(PacketDirection.FORWARD)),
-            "fwd_pkt_len_min": float(packet_length.get_min(PacketDirection.FORWARD)),
-            "fwd_pkt_len_mean": float(packet_length.get_mean(PacketDirection.FORWARD)),
+            " Fwd Packet Length Min": float(packet_length.get_min(PacketDirection.FORWARD)),
+            " Fwd Packet Length Mean": float(packet_length.get_mean(PacketDirection.FORWARD)),
             "fwd_pkt_len_std": float(packet_length.get_std(PacketDirection.FORWARD)),
             "bwd_pkt_len_max": float(packet_length.get_max(PacketDirection.REVERSE)),
-            "bwd_pkt_len_min": float(packet_length.get_min(PacketDirection.REVERSE)),
+            " Bwd Packet Length Min": float(packet_length.get_min(PacketDirection.REVERSE)),
             "bwd_pkt_len_mean": float(packet_length.get_mean(PacketDirection.REVERSE)),
-            "bwd_pkt_len_std": float(packet_length.get_std(PacketDirection.REVERSE)),
+            " Bwd Packet Length Std": float(packet_length.get_std(PacketDirection.REVERSE)),
             "pkt_len_max": packet_length.get_max(),
-            "pkt_len_min": packet_length.get_min(),
+            " Min Packet Length": packet_length.get_min(),
             "pkt_len_mean": float(packet_length.get_mean()),
             "pkt_len_std": float(packet_length.get_std()),
             "pkt_len_var": float(packet_length.get_var()),
             "fwd_header_len": flow_bytes.get_forward_header_bytes(),
             "bwd_header_len": flow_bytes.get_reverse_header_bytes(),
             "fwd_seg_size_min": flow_bytes.get_min_forward_header_bytes(),
-            "fwd_act_data_pkts": packet_count.has_payload(PacketDirection.FORWARD),
+            " act_data_pkt_fwd": packet_count.has_payload(PacketDirection.FORWARD),
             # Flows Interarrival Time
-            "flow_iat_mean": float(flow_iat["mean"]),
-            "flow_iat_max": float(flow_iat["max"]),
+            " Flow IAT Mean": float(flow_iat["mean"]),
+            " Flow IAT Max": float(flow_iat["max"]),
             "flow_iat_min": float(flow_iat["min"]),
             "flow_iat_std": float(flow_iat["std"]),
-            "fwd_iat_tot": forward_iat["total"],
+            "Fwd IAT Total": forward_iat["total"],
             "fwd_iat_max": float(forward_iat["max"]),
             "fwd_iat_min": float(forward_iat["min"]),
             "fwd_iat_mean": float(forward_iat["mean"]),
-            "fwd_iat_std": float(forward_iat["std"]),
-            "bwd_iat_tot": float(backward_iat["total"]),
-            "bwd_iat_max": float(backward_iat["max"]),
+            " Fwd IAT Std": float(forward_iat["std"]),
+            "Bwd IAT Total": float(backward_iat["total"]),
+            " Bwd IAT Max": float(backward_iat["max"]),
             "bwd_iat_min": float(backward_iat["min"]),
             "bwd_iat_mean": float(backward_iat["mean"]),
             "bwd_iat_std": float(backward_iat["std"]),
@@ -149,21 +149,21 @@ class Flow:
             "fin_flag_cnt": flag_count.has_flag("FIN"),
             "syn_flag_cnt": flag_count.has_flag("SYN"),
             "rst_flag_cnt": flag_count.has_flag("RST"),
-            "psh_flag_cnt": flag_count.has_flag("PSH"),
-            "ack_flag_cnt": flag_count.has_flag("ACK"),
-            "urg_flag_cnt": flag_count.has_flag("URG"),
+            " PSH Flag Count": flag_count.has_flag("PSH"),
+            " ACK Flag Count": flag_count.has_flag("ACK"),
+            " URG Flag Count": flag_count.has_flag("URG"),
             "ece_flag_cnt": flag_count.has_flag("ECE"),
             # Response Time
-            "down_up_ratio": packet_count.get_down_up_ratio(),
+            " Down/Up Ratio": packet_count.get_down_up_ratio(),
             "pkt_size_avg": packet_length.get_avg(),
-            "init_fwd_win_byts": self.init_window_size[PacketDirection.FORWARD],
-            "init_bwd_win_byts": self.init_window_size[PacketDirection.REVERSE],
+            "Init_Win_bytes_forward": self.init_window_size[PacketDirection.FORWARD],
+            " Init_Win_bytes_backward": self.init_window_size[PacketDirection.REVERSE],
             "active_max": float(active_stat["max"]),
             "active_min": float(active_stat["min"]),
             "active_mean": float(active_stat["mean"]),
             "active_std": float(active_stat["std"]),
             "idle_max": float(idle_stat["max"]),
-            "idle_min": float(idle_stat["min"]),
+            " Idle Min": float(idle_stat["min"]),
             "idle_mean": float(idle_stat["mean"]),
             "idle_std": float(idle_stat["std"]),
             "fwd_byts_b_avg": float(
@@ -187,10 +187,10 @@ class Flow:
         }
 
         # Duplicated features
-        data["fwd_seg_size_avg"] = data["fwd_pkt_len_mean"]
+        data[" min_seg_size_forward"] = data["fwd_pkt_len_mean"]
         data["bwd_seg_size_avg"] = data["bwd_pkt_len_mean"]
         data["cwe_flag_count"] = data["fwd_urg_flags"]
-        data["subflow_fwd_pkts"] = data["tot_fwd_pkts"]
+        data[" Subflow Fwd Bytes"] = data["tot_fwd_pkts"]
         data["subflow_bwd_pkts"] = data["tot_bwd_pkts"]
         data["subflow_fwd_byts"] = data["totlen_fwd_pkts"]
         data["subflow_bwd_byts"] = data["totlen_bwd_pkts"]
