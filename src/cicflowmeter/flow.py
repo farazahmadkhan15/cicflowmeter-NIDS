@@ -104,10 +104,10 @@ class Flow:
             "fwd_pkts_s": packet_count.get_rate(PacketDirection.FORWARD),
             " Bwd Packets/s": packet_count.get_rate(PacketDirection.REVERSE),
             # Count total packets by direction
-            "Total Length of Fwd Packets": packet_count.get_total(PacketDirection.FORWARD),
+            "tot_fwd_pkts": packet_count.get_total(PacketDirection.FORWARD),
             "tot_bwd_pkts": packet_count.get_total(PacketDirection.REVERSE),
             # Statistical info obtained from Packet lengths
-            "totlen_fwd_pkts": packet_length.get_total(PacketDirection.FORWARD),
+            "Total Length of Fwd Packets": packet_length.get_total(PacketDirection.FORWARD),
             "totlen_bwd_pkts": packet_length.get_total(PacketDirection.REVERSE),
             "fwd_pkt_len_max": float(packet_length.get_max(PacketDirection.FORWARD)),
             " Fwd Packet Length Min": float(packet_length.get_min(PacketDirection.FORWARD)),
@@ -187,12 +187,12 @@ class Flow:
         }
 
         # Duplicated features
-        data[" min_seg_size_forward"] = data["fwd_pkt_len_mean"]
+        data[" min_seg_size_forward"] = data[" Fwd Packet Length Mean"]
         data["bwd_seg_size_avg"] = data["bwd_pkt_len_mean"]
         data["cwe_flag_count"] = data["fwd_urg_flags"]
         data[" Subflow Fwd Bytes"] = data["tot_fwd_pkts"]
         data["subflow_bwd_pkts"] = data["tot_bwd_pkts"]
-        data["subflow_fwd_byts"] = data["totlen_fwd_pkts"]
+        data["subflow_fwd_byts"] = data["Total Length of Fwd Packets"]
         data["subflow_bwd_byts"] = data["totlen_bwd_pkts"]
 
         return data
